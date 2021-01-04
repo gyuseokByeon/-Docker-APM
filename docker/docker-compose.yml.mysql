@@ -49,15 +49,15 @@ services:
             - MYSQL_IP=${MYSQL_IP}
             - MYSQL_ROOT_USER=${MYSQL_ROOT_USER}
             - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
-    mariadb_img:
-        container_name: ${PROJECT_NAME}_mariadb
+    mysql_img:
+        container_name: ${PROJECT_NAME}_mysql
         build:
-            context: ./mariadb
+            context: ./mysql
             args:
                 - MYSQL_CONTAINER_USER=${MYSQL_CONTAINER_USER}
                 - MYSQL_CONTAINER_GROUP=${MYSQL_CONTAINER_GROUP}
         volumes:
-            - ../logs/mariadb:${MARIADB_LOG_DIR}
+            - ../logs/mysql:${MYSQL_LOG_DIR}
             - ../database:${MYSQL_DATA_DIR}
         ports:
             - 3306:3306
